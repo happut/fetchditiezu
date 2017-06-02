@@ -1,5 +1,6 @@
 package com.github.happut;
 
+import com.github.happut.po.DitiezuPost;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,9 +1,13 @@
 package com.github.happut;
 
+import com.github.happut.po.DitiezuPost;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,5 +31,13 @@ public class DitiezuPostControllar {
                                         @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                         @RequestParam(value = "searchContent") String searchContent) {
         return ditiezuService.searchCity(pageNumber,pageSize,searchContent);
+    }
+
+    @RequestMapping(value = "/api/ditiezu/reindex", method = RequestMethod.GET)
+    @ResponseBody
+    public String reindex() throws IOException {
+        Document document = Jsoup.connect("http://www.ditiezu.com/forum-7-1.html").get();
+        document.select("");
+        return "ok";
     }
 }

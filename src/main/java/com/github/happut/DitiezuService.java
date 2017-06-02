@@ -1,5 +1,6 @@
 package com.github.happut;
 
+import com.github.happut.po.DitiezuPost;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
@@ -53,5 +54,9 @@ public class DitiezuService {
 
         Page<DitiezuPost> searchPageResults = ditiezuPostRepository.search(searchQuery);
         return searchPageResults.getContent();
+    }
+
+    public void saveAllEntity(List<DitiezuPost> posts){
+        ditiezuPostRepository.save(posts);
     }
 }
